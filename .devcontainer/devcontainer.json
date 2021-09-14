@@ -3,27 +3,33 @@
 {
 	"name": "Go with Docker in Docker",
 	"dockerFile": "Dockerfile",
-	"runArgs": ["--init", "--privileged"],
+	"runArgs": [
+		"--init",
+		"--privileged"
+	],
 	"overrideCommand": false,
-	
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
-		"terminal.integrated.shell.linux": "/bin/zsh",
+		"terminal.integrated.profiles.linux": {
+			"zsh (login)": {
+				"path": "zsh",
+				"args": [
+					"-l"
+				]
+			}
+		},
 		"go.gopath": "/go"
 	},
-	
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
+		"bazelbuild.vscode-bazel",
 		"golang.Go",
-		"ms-azuretools.vscode-docker"
+		"ms-azuretools.vscode-docker",
 	],
-	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-	
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "apt-get update && apt-get install -y git && make install"
-	
+	"postCreateCommand": "apt-get update && apt-get install -y git"
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode"
 }
