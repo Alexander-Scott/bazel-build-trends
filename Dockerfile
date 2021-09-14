@@ -1,3 +1,3 @@
 FROM scratch
-COPY seed /
-ENTRYPOINT ["/seed"]
+COPY bazel-build-trends /
+ENTRYPOINT ["/bazel-build-trends"]
