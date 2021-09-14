@@ -18,6 +18,6 @@ if type buildifier > /dev/null 2>&1; then
     echo "Buildifier already installed."
 else
     BUILDIFIER_VERSION=4.2.0
-    curl -sSL "https://github.com/bazelbuild/buildtools/releases/download/${BUILDIFIER_VERSION}/buildozer-linux-amd64" -o /usr/local/bin/buildifier
+    curl -sSL "https://github.com/bazelbuild/buildtools/releases/download/${BUILDIFIER_VERSION}/buildifier-linux-amd64" -o /usr/local/bin/buildifier
     chmod +x /usr/local/bin/buildifier
 fi

@@ -1,4 +1,4 @@
-module github.com/golang-templates/seed
+module github.com/alexander-scott/bazel-build-trends
 
 go 1.16
 
