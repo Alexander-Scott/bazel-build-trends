@@ -49,12 +49,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: bazelbuild/setup-bazelisk@v1
-      - name: Mount bazel cache  # Optional
-        uses: actions/cache@v2
-        with:
-          path: "~/.cache/bazel"
-          key: bazel
       - run: bazel build //...
+      - run: bazel test //...
 
   release-test:
     runs-on: ubuntu-20.04
