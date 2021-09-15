@@ -33,3 +33,14 @@ go_rules_dependencies()
 go_register_toolchains(version = "1.17")
 
 gazelle_dependencies()
+
+http_archive(
+    name = "com_google_protobuf",
+    sha256 = "761bfffc7d53cd01514fa237ca0d3aba5a3cfd8832a71808c0ccc447174fd0da",
+    strip_prefix = "protobuf-3.11.1",
+    urls = ["https://github.com/protocolbuffers/protobuf/releases/download/v3.11.1/protobuf-all-3.11.1.tar.gz"],
+)
+
+load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+
+protobuf_deps()
