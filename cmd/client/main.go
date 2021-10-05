@@ -26,8 +26,9 @@ import (
 	"os"
 	"time"
 
-	pb "github.com/alexander-scott/bazel-build-trends/pkg/proto"
 	"google.golang.org/grpc"
+
+	pb "github.com/alexander-scott/bazel-build-trends/pkg/proto"
 )
 
 var (
@@ -46,7 +47,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
-	defer conn.Close()
+
 	c := pb.NewGreeterClient(conn)
 
 	// Contact the server and print out its response.
@@ -61,4 +62,8 @@ func main() {
 		log.Printf("could not greet: %v", err)
 	}
 	log.Printf("Greeting: %s", r.GetMessage())
+
+	if val := conn.Close(); val != nil {
+		log.Printf("could not greet: %v", val)
+	}
 }
