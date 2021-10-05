@@ -24,12 +24,13 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/alexander-scott/bazel-build-trends/pkg/proto"
 	"google.golang.org/grpc"
+
+	pb "github.com/alexander-scott/bazel-build-trends/pkg/proto"
 )
 
 const (
-	port = ":50051"
+	port = "localhost:50051"
 )
 
 // server is used to implement helloworld.GreeterServer.
