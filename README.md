@@ -33,3 +33,11 @@ protoc --go_out=. --go_opt=paths=source_relative \
     --go-grpc_out=. --go-grpc_opt=paths=source_relative \
     examples/proto/helloworld.proto
 ```
+
+## TODO
+
+- [x] Configure what the client sends to the server.
+- [x] Allow configuring the client message via CLI.
+- [ ] Create a proper repo structure.
+- [ ] Import the bazel build stream plugin.
+- [ ] Attempt to receive a bazel build stream from a bazel invocation.
