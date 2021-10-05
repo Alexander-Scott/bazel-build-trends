@@ -60,15 +60,15 @@ diff: ## git diff
 .PHONY: build
 build: ## goreleaser --snapshot --skip-publish --rm-dist
 build: install
-	cd cmd/server
 	$(call print-target)
+	cd cmd/server
 	goreleaser --snapshot --skip-publish --rm-dist
 
 .PHONY: release
 release: ## goreleaser --rm-dist
 release: install
-	cd cmd/server
 	$(call print-target)
+	cd cmd/server
 	goreleaser --rm-dist
 
 .PHONY: run
