@@ -10,6 +10,7 @@ builds:
     - windows
   goarch:
     - amd64
+  dir: cmd/server
 archives:
 - format_overrides:
     - goos: windows
