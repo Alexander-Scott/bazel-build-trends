@@ -5,16 +5,16 @@ go_library(
     srcs = [
         "main.go",
     ],
-    importpath = "github.com/alexander-scott/bazel-build-trends/examples/server",
+    importpath = "github.com/alexander-scott/bazel-build-trends/cmd/client",
     visibility = ["//visibility:private"],
     deps = [
-        "//examples/proto:hello_world_grpc_proto",
+        "//pkg/proto:hello_world_grpc_proto",
         "@org_golang_google_grpc//:go_default_library",
     ],
 )
 
 go_binary(
-    name = "server",
+    name = "client",
     embed = [":go_default_library"],
     pure = "on",
     visibility = ["//visibility:public"],
