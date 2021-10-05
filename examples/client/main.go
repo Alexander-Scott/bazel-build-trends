@@ -21,6 +21,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"log"
 	"os"
 	"time"
@@ -29,10 +30,15 @@ import (
 	"google.golang.org/grpc"
 )
 
-const (
+var (
 	address     = "localhost:50051"
-	defaultName = "world"
+	defaultName string
 )
+
+func init() {
+	flag.StringVar(&defaultName, "defaultName", "person", "Name to send to server")
+	flag.Parse()
+}
 
 func main() {
 	// Set up a connection to the server.
