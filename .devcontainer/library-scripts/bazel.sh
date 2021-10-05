@@ -5,7 +5,7 @@ set -e
 if type bazel > /dev/null 2>&1; then
     echo "Bazel already installed."
 else
-    BAZEL_VERSION=4.1.0
+    BAZEL_VERSION=4.2.1
     BAZEL_DOWNLOAD_SHA=dev-mode
     curl -fSsL -o /tmp/bazel-installer.sh https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh \
         && ([ "${BAZEL_DOWNLOAD_SHA}" = "dev-mode" ] || echo "${BAZEL_DOWNLOAD_SHA} */tmp/bazel-installer.sh" | sha256sum --check - ) \
