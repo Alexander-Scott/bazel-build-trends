@@ -2,6 +2,7 @@
 
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 load("@io_bazel_rules_go//proto:def.bzl", "go_grpc_library", "go_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
 
 proto_library(
     name = "hello_world_proto",
