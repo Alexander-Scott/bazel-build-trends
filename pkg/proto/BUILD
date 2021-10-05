@@ -12,14 +12,14 @@ proto_library(
 
 go_proto_library(
     name = "hello_world_go_proto",
-    importpath = "github.com/alexander-scott/bazel-build-trends/examples/proto",
+    importpath = "github.com/alexander-scott/bazel-build-trends/pkg/proto",
     proto = ":hello_world_proto",
     visibility = ["//visibility:public"],
 )
 
 go_grpc_library(
     name = "hello_world_grpc_proto",
-    importpath = "github.com/alexander-scott/bazel-build-trends/examples/proto",
+    importpath = "github.com/alexander-scott/bazel-build-trends/pkg/proto",
     proto = ":hello_world_proto",
     visibility = ["//visibility:public"],
 )
@@ -27,6 +27,6 @@ go_grpc_library(
 go_library(
     name = "go_default_library",
     embed = [":hello_world_go_proto"],
-    importpath = "github.com/alexander-scott/bazel-build-trends/examples/proto",
+    importpath = "github.com/alexander-scott/bazel-build-trends/pkg/proto",
     visibility = ["//visibility:public"],
 )

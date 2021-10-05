@@ -26,7 +26,7 @@ import (
 	"os"
 	"time"
 
-	pb "github.com/alexander-scott/bazel-build-trends/examples/proto"
+	pb "github.com/alexander-scott/bazel-build-trends/pkg/proto"
 	"google.golang.org/grpc"
 )
 

@@ -32,6 +32,8 @@
         "bazel-testlogs": true,
     },
     "cSpell.words": [
-        "grpc"
+        "grpc",
+        "Protobuf",
+        "protoc"
     ]
 }
