@@ -1,4 +1,4 @@
-module github.com/alexander-scott/bazel-build-trends/build
+module github.com/alexander-scott/bazel-build-trends/tools
 
 go 1.16
 
