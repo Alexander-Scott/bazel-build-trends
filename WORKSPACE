@@ -10,13 +10,23 @@ http_archive(
 )
 
 # Download Gazelle.
-http_archive(
+# Broken because of https://github.com/bazelbuild/rules_go/issues/2479
+# http_archive(
+#     name = "bazel_gazelle",
+#     sha256 = "62ca106be173579c0a167deb23358fdfe71ffa1e4cfdddf5582af26520f1c66f",
+#     urls = [
+#         "https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.23.0/bazel-gazelle-v0.23.0.tar.gz",
+#         "https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.23.0/bazel-gazelle-v0.23.0.tar.gz",
+#     ],
+# )
+# We pick a specific hash instead which has fixed the bug.
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
     name = "bazel_gazelle",
-    sha256 = "62ca106be173579c0a167deb23358fdfe71ffa1e4cfdddf5582af26520f1c66f",
-    urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.23.0/bazel-gazelle-v0.23.0.tar.gz",
-        "https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.23.0/bazel-gazelle-v0.23.0.tar.gz",
-    ],
+    commit = "9f72eed9f79bfc18a04e8ac6204751998c7cba4a",  # googletest v1.10.0
+    remote = "https://github.com/bazelbuild/bazel-gazelle",
+    shallow_since = "1624970813 -0400",
 )
 
 # Download the bazel sourcecode
