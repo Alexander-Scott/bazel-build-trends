@@ -19,6 +19,14 @@ http_archive(
     ],
 )
 
+# Download the bazel sourcecode
+http_archive(
+    name = "com_github_bazelbuild_bazel",
+    patches = ["//:patches/com_github_bazelbuild_bazel/build_event_stream.diff"],
+    sha256 = "2cea463d611f5255d2f3d41c8de5dcc0961adccb39cf0ac036f07070ba720314",
+    urls = ["https://github.com/bazelbuild/bazel/releases/download/0.28.1/bazel-0.28.1-dist.zip"],
+)
+
 # Load macros and repository rules.
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
@@ -36,9 +44,9 @@ gazelle_dependencies()
 
 http_archive(
     name = "com_google_protobuf",
-    sha256 = "761bfffc7d53cd01514fa237ca0d3aba5a3cfd8832a71808c0ccc447174fd0da",
-    strip_prefix = "protobuf-3.11.1",
-    urls = ["https://github.com/protocolbuffers/protobuf/releases/download/v3.11.1/protobuf-all-3.11.1.tar.gz"],
+    sha256 = "b8ab9bbdf0c6968cf20060794bc61e231fae82aaf69d6e3577c154181991f576",
+    strip_prefix = "protobuf-3.18.1",
+    urls = ["https://github.com/protocolbuffers/protobuf/releases/download/v3.18.1/protobuf-all-3.18.1.tar.gz"],
 )
 
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")

@@ -20,28 +20,46 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"log"
 	"net"
+	"sync"
 
+	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
-	pb "github.com/alexander-scott/bazel-build-trends/pkg/proto"
+	build "google.golang.org/genproto/googleapis/devtools/build/v1"
 )
 
 const (
 	port = "localhost:50051"
 )
 
-// server is used to implement helloworld.GreeterServer.
-type server struct {
-	pb.UnimplementedGreeterServer
+type streamState struct {
+	committedSequences int64
+	bazelBuildEvents   *bytes.Buffer
 }
 
-// SayHello implements helloworld.GreeterServer.
-func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
-	log.Printf("Received: %v", in.GetName())
-	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
+// server is used to implement helloworld.GreeterServer.
+type buildEventServer struct {
+	build.UnimplementedPublishBuildEventServer
+	lock    sync.Mutex
+	streams map[string]*streamState
+}
+
+func (bes *buildEventServer) PublishLifecycleEvent(ctx context.Context, in *build.PublishLifecycleEventRequest) (*empty.Empty, error) {
+	// For now, completely ignore lifecycle events.
+	return &empty.Empty{}, nil
+}
+
+func (bes *buildEventServer) processBuildToolEvent(ctx context.Context, in *build.PublishBuildToolEventStreamRequest) (*build.PublishBuildToolEventStreamResponse, error) {
+	return nil, nil
+}
+
+func (bes *buildEventServer) PublishBuildToolEventStream(stream build.PublishBuildEvent_PublishBuildToolEventStreamServer) error {
+	// For now, completely ignore lifecycle events.
+	return nil
 }
 
 func main() {
@@ -49,8 +67,10 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
+
 	s := grpc.NewServer()
-	pb.RegisterGreeterServer(s, &server{})
+	build.RegisterPublishBuildEventServer(s, &buildEventServer{})
+
 	log.Printf("server listening at %v", lis.Addr())
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)

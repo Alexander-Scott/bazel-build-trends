@@ -22,15 +22,6 @@
     "go.lintFlags": [
         "--fast"
     ],
-    "files.exclude": {
-        "**/.git": true,         // this is a default value
-        "**/.DS_Store": true,    // this is a default value
-
-        "bazel-bin": true,
-        "bazel-bazel-build-trends": true,
-        "bazel-out": true,
-        "bazel-testlogs": true,
-    },
     "cSpell.words": [
         "grpc",
         "Protobuf",
