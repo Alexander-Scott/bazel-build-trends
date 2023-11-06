@@ -3,6 +3,8 @@ module github.com/alexander-scott/bazel-build-trends/tools
 go 1.16
 
 require (
-	github.com/golangci/golangci-lint v1.42.1
+	cloud.google.com/go/iam v1.1.5 // indirect
+	cloud.google.com/go/kms v1.15.5 // indirect
+	github.com/golangci/golangci-lint v1.55.2
 	github.com/goreleaser/goreleaser v0.176.0
 )
